@@ -6,6 +6,8 @@ const forecast = require('../src/utils/forecast');
 
 const app = express();
 
+
+
 //definizione configuraziobe per Express.js
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewPath = path.join(__dirname, '../templates/views');
