@@ -6,8 +6,6 @@ const forecast = require('../src/utils/forecast');
 
 const app = express();
 
-
-
 //definizione configuraziobe per Express.js
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewPath = path.join(__dirname, '../templates/views');
@@ -32,7 +30,7 @@ const weatherData = {
   location: 'Avola, Syracuse, Italy',
   forecstData:
     'Partly cloudy. it is currently 17 degress out. It feels like 17 degress out',
-    sender : "MoMus",
+  sender: 'MoMus',
   //  error: "An error has occured"
 };
 
@@ -59,19 +57,27 @@ app.get('/weather', (req, res) => {
     });
   }
 
-  let { forecstData }= weatherData;
+  let { forecstData } = weatherData;
 
-  res.render("weather", {
-              location: location,
-              title: 'Weather Page',
-              forecstData: forecstData,
-              name: 'MoMo and Mas in collaboration with external API',
-            }
-            );
+  console.log(req.query.location);
+  weatherData.location = req.query.location;
+
+  console.log(weatherData);
+
+  
+  // res.render('weather', {
+  //   weatherData: weatherData,
+  //   location: location,
+  //   title: 'Weather Page',
+  //   forecstData: forecstData,
+  //   name: 'MoMo and Mas in collaboration with external API',
+  // });
+  
+  res.send(weatherData);
 
   
   // geocode(location, (error, {latitude ,longitude, location}) => {
-    
+
   //   if (error) {
   //     return  res.send({
   //       error: error,
@@ -93,10 +99,6 @@ app.get('/weather', (req, res) => {
   //     });
   //   }
   // });
-
-
-
-
 });
 
 app.get('/products', (req, res) => {

@@ -10,25 +10,32 @@ console.log('Client side javascript file is loaded!');
 
 const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
+const messageOne = document.querySelector('#message-1');
+const messageTwo = document.querySelector('#message-2');
 
-let test=8;
+// messageOne.textContent = "From JavaScript";
 
 let call = (address) => {
   let url = 'http://localhost:3000/weather?location=' + address;
   fetch(url).then((response) => {
     response.json().then((data) => {
-
-      const { error, location, forecstData, sender } = data;
-
+      const { error, location, forecstData, sender, weatherData } = data;
+      console.log(data);
       if (error) {
-        console.log(error);
+        messageOne.textContent = error;
+        // console.log(error);
         return;
       } else {
+        console.log(weatherData + 'ciao');
+
+        messageOne.textContent = location;
+        messageTwo.textContent = forecstData;
+
         console.log({
-          address:address,
-          location: location,
-          forecstData: forecstData,
-          sender: sender,
+          address: address,
+          //  location: location,
+          //  forecstData: forecstData,
+          //   sender: sender,
         });
       }
     });
@@ -39,8 +46,10 @@ weatherForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const location = search.value;
+  messageOne.textContent = 'Loading...';
+  messageTwo.textContent = '';
+
+  //console.log(location);
 
   call(location);
-
-  console.log(location);
 });
