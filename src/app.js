@@ -59,16 +59,14 @@ app.get('/weather', (req, res) => {
     });
   }
 
-  //let { forecstData }= weatherData;
+  let { forecstData }= weatherData;
 
-  res.send(weatherData
-  
-  // {
-  //             location: location,
-  //             title: 'Weather Page',
-  //             forecstData: forecstData,
-  //             name: 'MoMo and Mas in collaboration with external API',
-  //           }
+  res.send("weather", {
+              location: location,
+              title: 'Weather Page',
+              forecstData: forecstData,
+              name: 'MoMo and Mas in collaboration with external API',
+            }
             );
 
   
