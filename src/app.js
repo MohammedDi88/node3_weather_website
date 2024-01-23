@@ -61,7 +61,7 @@ app.get('/weather', (req, res) => {
 
   let { forecstData }= weatherData;
 
-  res.send("weather", {
+  res.render("weather", {
               location: location,
               title: 'Weather Page',
               forecstData: forecstData,
