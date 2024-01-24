@@ -15,8 +15,13 @@ const messageTwo = document.querySelector('#message-2');
 
 // messageOne.textContent = "From JavaScript";
 
+
+// https://masmuscompany.onrender.com/weather?location=Avola%20Siracusa
+
+// http://localhost:3000/weather?location=
+
 let call = (address) => {
-  let url = 'http://localhost:3000/weather?location=' + address;
+  let url = 'https://masmuscompany.onrender.com/weather?location' + address;
   fetch(url).then((response) => {
     response.json().then((data) => {
       const { error, location, forecstData, sender, weatherData } = data;
