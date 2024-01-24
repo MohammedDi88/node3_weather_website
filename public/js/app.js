@@ -21,7 +21,7 @@ const messageTwo = document.querySelector('#message-2');
 // http://localhost:3000/weather?location=
 
 let call = (address) => {
-  let url = 'https://masmuscompany.onrender.com/weather?location' + address;
+  let url = 'https://masmuscompany.onrender.com/weather?location=' + address;
   fetch(url).then((response) => {
     response.json().then((data) => {
       const { error, location, forecstData, sender, weatherData } = data;
